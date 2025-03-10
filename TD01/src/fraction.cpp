@@ -4,7 +4,7 @@
 #include <iostream>
 
 // void Fraction::display() {
-
+// Exercice2 (affichage)
 std::ostream& operator<<(std::ostream& os, Fraction const& f){
     os << f.numerator << "/" << f.denominator;
     return os;
@@ -26,6 +26,7 @@ std::ostream& operator<<(std::ostream& os, Fraction const& f){
 //     return simplify(result);
 // }
 
+//Exercice 1 (opérations)
 Fraction operator+(Fraction const& f1, Fraction const& f2){
     return simplify({
         f1.numerator * f2.denominator + f2.numerator * f1.denominator,
@@ -61,6 +62,7 @@ Fraction operator/(Fraction const& f1, Fraction const& f2) {
     });
 }
 
+    // Exercice 3 (égalité)
 bool operator==(Fraction const& f1, Fraction const& f2) {
     return
         f1.numerator * f2.denominator == f1.denominator * f2.numerator;
@@ -70,6 +72,13 @@ bool operator!=(Fraction const& f1, Fraction const& f2) {
     return !(f1 == f2);
     }
 
+    // Exercice 4 (comparaison)
 bool operator< (Fraction const& f1, Fraction const& f2) {
-    return !(f1 == f2);
+    return
+        f1.numerator * f2.denominator < f1.denominator * f2.numerator;
     }
+
+bool operator> (Fraction const& f1, Fraction const& f2) {
+    return !(f1 < f2);
+    }
+

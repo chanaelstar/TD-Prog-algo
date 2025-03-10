@@ -44,5 +44,27 @@ int main()
     {
         std::cout << "Les fractions f1 et f2 sont egales." << std::endl;
     }
+    std::cout << std::endl;
+
+
+    if (f1 < f2)
+    {
+        std::cout << "La fraction f1 est inferieure a la fraction f2." << std::endl;
+    }
+    else
+    {
+        std::cout << "La fraction f1 est superieure a la fraction f2." << std::endl;
+    }
+    std::cout << std::endl;
+
+
+    if (f1 > f2)
+    {
+        std::cout << "La fraction f1 est superieure a la fraction f2." << std::endl;
+    }
+    else
+    {
+        std::cout << "La fraction f1 est inferieure a la fraction f2." << std::endl;
+    }
     return 0;
 }
