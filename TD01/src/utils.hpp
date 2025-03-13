@@ -2,5 +2,6 @@
 
 #include "fraction.hpp"
 
-unsigned int gcd(unsigned int a, unsigned int b);
+int gcd(int a, int b);
 Fraction simplify(Fraction const& f);
+void simplify_ref(Fraction& f);
