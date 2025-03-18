@@ -15,8 +15,8 @@ int main()
     for (int num : array) std::cout << num << " ";
     std::cout << std::endl;
 
-    bubble_sort(array);
-
+    
+    
     std::cout << "Tableau apres tri à bulles (bubble sort) :" << std::endl;
     for (int num : array) std::cout << num << " ";
     std::cout << std::endl;
