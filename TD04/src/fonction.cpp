@@ -44,3 +44,26 @@ int sum_vector(std::vector<int> &vec)
 
 
 // Exercice 2 - String
+size_t number_letters(std::string const& str){
+    auto const is_space = [](char letter){ return letter == ' '; };
+    auto first_letter = std::find_if_not(str.begin(), str.end(), is_space);
+    if (first_letter == str.end())
+        return 0;
+    auto first_space = std::find_if(first_letter, str.end(), is_space);
+    if (first_space == str.end())
+        return std::distance(first_letter, str.end());
+
+    return std::distance(first_letter, first_space);
+}
+
+std::vector<std::string> split_string(std::string const& str){
+    std::vector<std::string> words;
+    auto const is_space = [](char letter){ return letter == ' '; };
+    auto first_letter = std::find_if_not(str.begin(), str.end(), is_space);
+    while (first_letter != str.end()){
+        auto first_space = std::find_if(first_letter, str.end(), is_space);
+        words.push_back(std::string(first_letter, first_space));
+        first_letter = std::find_if_not(first_space, str.end(), is_space);
+    }
+    return words;
+}

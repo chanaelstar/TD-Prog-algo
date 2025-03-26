@@ -18,3 +18,5 @@ int sum_vector(std::vector<int>& vec);
 
 
 // Exercice 2 - String
+size_t number_letters(std::string const& str);
+std::vector<std::string> split_string(std::string const& str);
