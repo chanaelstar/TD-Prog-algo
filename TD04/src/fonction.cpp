@@ -67,3 +67,22 @@ std::vector<std::string> split_string(std::string const& str){
     }
     return words;
 }
+
+
+
+// Exercice 3 - Palindrome
+bool is_palindrome(std::string const& str){
+    return (std::equal (str.begin(), str.begin() + str.size()/2, str.rbegin()) );
+}
+
+
+// Bonus - Pour aller plus loin (lambda)
+int square_sum(std::vector<int> const &v)
+{
+    return std::accumulate(v.begin(), v.end(), 0, [](int a, int b) { return a + std::pow(b, 2); });
+}
+
+int pair_prod(std::vector<int> const &v)
+{
+    return std::accumulate(v.begin(), v.end(), 1, [](int a, int b) { if (b % 2 == 0) return a * b; return a; });
+}
