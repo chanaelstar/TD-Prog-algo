@@ -124,3 +124,7 @@ float Fraction::to_float() const {
 Fraction::operator float() const {
     return to_float();
 }
+
+
+    // Aller plus loin 
+

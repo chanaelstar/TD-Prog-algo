@@ -97,6 +97,33 @@ int main()
     std::cout << std::endl;
     std::cout << std::endl;
 
+
+    // exercice 5
+    f3 = f1;
+    f3 += f2;
+    std::cout << "f1 += f2 = " << f3 << std::endl;
+
+    f3 = f1;
+    f3 -= f2;
+    std::cout << "f1 -= f2 = " << f3 << std::endl;
+
+    f3 = f1;
+    f3 *= f2;
+    std::cout << "f1 *= f2 = " << f3 << std::endl;
+
+    f3 = f1;
+    f3 /= f2;
+    std::cout << "f1 /= f2 = " << f3 << std::endl;
+    std::cout << std::endl;
+
+
+    // exercice 6
+    float floatNumber = static_cast<float>(f1);
+     std::cout << "f1 en format de type float = " << floatNumber << std::endl;
+
+
+    // Aller plus loin 
+    
     return 0;
 
 }
