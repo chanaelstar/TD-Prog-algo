@@ -77,15 +77,6 @@ std::ostream& operator<<(std::ostream& os, std::unordered_map<Insect, int> map);
 std::ostream& operator<<(std::ostream& os, std::vector<float> const& vec);
 
 
-
-
-
-
-
-
-
-
-
 // Exercice 3 (hash sur une structure)
 enum class CardKind {
     Heart,
@@ -113,7 +104,24 @@ enum class CardValue {
 struct Card {
     CardKind kind;
     CardValue value;
+
+    bool operator==(Card const& card) const {
+        return kind == card.kind && value == card.value;
+    };
+
+    int hash() const {
+        return static_cast<int>(kind) * 13 + static_cast<int>(value);
+    };
 };
 
+namespace std {
+    template<>
+    struct hash<Card> {
+        size_t operator()(Card const& card) const {
+            return card.hash();
+        }
+    };
+}
 
 std::vector<Card> get_cards(size_t const size);
+std::string card_name(Card const& card);
