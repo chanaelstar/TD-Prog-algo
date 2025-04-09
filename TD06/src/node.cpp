@@ -52,7 +52,7 @@ void Node::insert(int value){
  // Hauteur de l'arbre
  int Node::height() const{
     if (is_leaf()) {
-        return 0;
+        return 1;
     } else {
         int left_height = left ? left->height() : -1;
         int right_height = right ? right->height() : -1;
