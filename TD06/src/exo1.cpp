@@ -1,6 +1,9 @@
 #include "node.hpp"
 
 int main() {
+    std::cout << "Exercice 1 - Implémentation" << std::endl;
+    std::cout << "==========================" << std::endl;
+
     Node* root = create_node(10); // Racine de l’arbre
 
     // Insertion de valeurs
@@ -61,11 +64,11 @@ int main() {
     std::cout << std::endl;
 
     // Suppression complète de l'arbre
-    std::cout << "Suppression complete de l'arbre :";
+    std::cout << "Suppression complete de l'arbre : ";
     delete_tree(root);
-
+    root = nullptr; // Mettre le pointeur à nullptr après la suppression    
     if (root == nullptr) {
-        std::cout << "Arbre supprimé avec succès." << std::endl;
+        std::cout << "Arbre supprime avec succes." << std::endl;
     }
 
 
