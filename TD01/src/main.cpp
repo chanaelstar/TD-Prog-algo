@@ -5,6 +5,8 @@ int main()
 {
     Fraction f1 { 3, 4 };
     Fraction f2 { 1, 2 };
+    
+
     std::cout << "f1 = " << f1 << std::endl;
     std::cout << static_cast<float>(f1) << std::endl;
     // std::cout <<  f1;
@@ -119,11 +121,46 @@ int main()
 
     // exercice 6
     float floatNumber = static_cast<float>(f1);
-     std::cout << "f1 en format de type float = " << floatNumber << std::endl;
+    std::cout << "f1 en format de type float = " << floatNumber << std::endl;
+    std::cout << std::endl;
+    std::cout << std::endl;
 
 
-    // Aller plus loin 
-    
+
+    // Aller plus loin (fonctions libres & opérations mathématiques)
+    std::cout << "Bonus : aller plus loin (fonctions libres & operations mathematiques)" << std::endl;
+    Fraction f { 3, 4 };
+    int i { 2 };
+
+    std::cout << "f + i = " << static_cast<float>(f + i) << std::endl;
+    std::cout << "i + f = " << static_cast<float>(i + f) << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "f - i = " << static_cast<float>(f - i) << std::endl;
+    std::cout << "i - f = " << static_cast<float>(i - f) << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "f * i = " << static_cast<float>(f * i) << std::endl;
+    std::cout << "i * f = " << static_cast<float>(i * f) << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "f / i = " << static_cast<float>(f / i) << std::endl;
+    std::cout << "i / f = " << static_cast<float>(i / f) << std::endl;
+    std::cout << std::endl;
+
+    std::cout << "Fonction mathematiques sur f = 3/4" << std::endl;
+    std::cout << "abs(f) = " << static_cast<float>(f.abs()) << std::endl; // valeur absolue de 3/4
+    std::cout << "ceil(f) = " << static_cast<float>(f.ceil()) << std::endl; // arrondi supérieur de 3/4
+    std::cout << "floor(f) = " << static_cast<float>(f.floor()) << std::endl; // arrondi inférieur de 3/4
+    std::cout << "round(f) = " << static_cast<float>(f.round()) << std::endl; // arrondi de 3/4
+    std::cout << std::endl;
+
+
+
+
+
+
+
     return 0;
 
 }

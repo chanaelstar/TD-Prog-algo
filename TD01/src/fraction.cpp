@@ -126,5 +126,80 @@ Fraction::operator float() const {
 }
 
 
-    // Aller plus loin 
+    // Aller plus loin (fonctions libres)
+// Fraction + int
+Fraction operator+(Fraction const& f, int const i){
+    return Fraction(f.numerator + i * f.denominator, f.denominator);
+}
+// int + Fraction
+Fraction operator+(int const i, Fraction const& f){
+    return f + i;
+}
 
+// Fraction - int
+Fraction operator-(Fraction const& f, int const i){
+    return Fraction(f.numerator - i * f.denominator, f.denominator);
+}
+// int - Fraction
+Fraction operator-(int const i, Fraction const& f){
+    return Fraction(i * f.denominator - f.numerator, f.denominator);
+}
+
+// Fraction * int
+Fraction operator*(Fraction const& f, int const i){
+    return Fraction(f.numerator * i, f.denominator);
+}
+// int * Fraction
+Fraction operator*(int const i, Fraction const& f){
+    return f * i;
+}
+// Fraction / int
+Fraction operator/(Fraction const& f, int const i){
+    if (i == 0) throw std::invalid_argument("Division par zero");
+    return Fraction(f.numerator, f.denominator * i);
+}
+// int / Fraction
+Fraction operator/(int const i, Fraction const& f){
+
+    return Fraction(i * f.denominator, f.numerator);
+}
+
+    // opérations mathématiques
+// Fraction Fraction::abs() const {
+//     return Fraction{(unsigned int)static_cast< int>(std::abs((int)numerator)), denominator};
+
+// }
+// Fraction Fraction::ceil() const {
+//     float value = static_cast<float>(numerator) / denominator;
+//     return Fraction{(unsigned int)static_cast< int>(std::ceil(value)), 1};
+
+// }
+// Fraction Fraction::floor() const {
+//     float value = static_cast<float>(numerator) / denominator;
+//     return Fraction{(unsigned int)static_cast< int>(std::floor(value)), 1};
+
+// }
+// Fraction Fraction::round() const {
+//     float value = static_cast<float>(numerator) / denominator;
+//     return Fraction{(unsigned int)static_cast< int>(std::round(value)), 1};
+// }
+
+
+Fraction Fraction::abs() const {
+    return Fraction{std::abs(numerator), denominator};
+}
+
+Fraction Fraction::ceil() const {
+    float value = static_cast<float>(numerator) / denominator;
+    return Fraction{static_cast<int>(std::ceil(value)), 1};
+}
+
+Fraction Fraction::floor() const {
+    float value = static_cast<float>(numerator) / denominator;
+    return Fraction{static_cast<int>(std::floor(value)), 1};
+}
+
+Fraction Fraction::round() const {
+    float value = static_cast<float>(numerator) / denominator;
+    return Fraction{static_cast<int>(std::round(value)), 1};
+}
