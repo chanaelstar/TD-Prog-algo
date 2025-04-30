@@ -19,4 +19,7 @@ int main()
     std::cout << "Resultat : " << npi_evaluate(tokens) << std::endl;
     return 0;
 
+    // 3 + 4 ^ 2 / ( 1 - 5 ) ^ 6
+    // 3 4 2 ^ 1 5 - 6 ^ / +
+
 }

@@ -53,7 +53,7 @@ Token make_token(float value){
     return {TokenType::OPERAND, value};
 }
 Token make_token(Operator op){
-    return {TokenType::OPERATOR, 0.f, op};
+    return {TokenType::OPERATOR,0.f, op};
 }
 
 std::vector<Token> tokenize(std::vector<std::string> const& words){
@@ -70,6 +70,13 @@ std::vector<Token> tokenize(std::vector<std::string> const& words){
                 tokens.push_back(make_token(Operator::MUL));
             } else if (word == "/"){
                 tokens.push_back(make_token(Operator::DIV));
+            } else if (word == "^"){
+                tokens.push_back(make_token(Operator::POW));
+            } else if (word == "(" ){
+                tokens.push_back(make_token(Operator::OPEN_PAREN));
+            } else if (word == ")" ){
+                tokens.push_back(make_token(Operator::CLOSE_PAREN));
+            
             } else {
                 throw std::runtime_error("Operateur inconnu : " + word);
             }
@@ -106,4 +113,93 @@ float npi_evaluate(std::vector<Token> const& tokens){
     return stack.top();
     throw std::runtime_error("Pas de token a evaluer");
     return 0.f;
+}
+
+
+//EXERCICE 3
+int operator_precedence(Operator const op){
+    switch (op) {
+        case Operator::ADD:
+        case Operator::SUB:
+            return 1;
+        case Operator::MUL:
+        case Operator::DIV:
+            return 2;
+        case Operator::POW:
+            return 3;
+        case Operator::OPEN_PAREN:
+        case Operator::CLOSE_PAREN:
+            return 0; 
+        default:
+            return -1; 
+    }
+
+}
+
+std::vector<Token> infix_to_npi_tokens(std::string const& expression){
+    std::vector<Token> output;
+    std::stack<Token> operators;
+    std::vector<std::string> words = split_string(expression);
+    std::vector<Token> tokens = tokenize(words);
+
+    for (Token token : tokens){
+        if (token.type == TokenType::OPERAND){
+            output.push_back(token);
+        } else if (token.type == TokenType::OPERATOR) {
+            if (token.op == Operator::OPEN_PAREN) {
+                operators.push(token);
+            } else if (token.op == Operator::CLOSE_PAREN) {
+                while (!operators.empty() && operators.top().op != Operator::OPEN_PAREN) {
+                    output.push_back(operators.top());
+                    operators.pop();
+                }
+                if (!operators.empty()) {
+                    operators.pop(); 
+                }
+            } else { 
+            while (!operators.empty() && operator_precedence(operators.top().op) >= operator_precedence(token.op)) {
+                output.push_back(operators.top());
+                operators.pop();
+            }
+            operators.push(token);
+        }
+        }
+    }
+
+    while (!operators.empty()) {
+        output.push_back(operators.top());
+        operators.pop();
+    }
+
+    return output;
+}
+
+// Affichage de l'expression en notation polonaise inverse
+void print_npi_expression(std::vector<Token> const& tokens){
+    for (Token token : tokens){
+        if (token.type == TokenType::OPERAND){
+            std::cout << token.value << " ";
+        } else {
+            switch (token.op) {
+                case Operator::ADD:
+                    std::cout << "+" << " ";
+                    break;
+                case Operator::SUB:
+                    std::cout << "-" << " ";
+                    break;
+                case Operator::MUL:
+                    std::cout << "*" << " ";
+                    break;
+                case Operator::DIV:
+                    std::cout << "/" << " ";
+                    break;
+                case Operator::POW:
+                    std::cout << "^" << " ";
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    std::cout << std::endl;
 }
