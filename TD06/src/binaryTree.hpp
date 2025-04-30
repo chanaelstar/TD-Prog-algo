@@ -1,16 +1,19 @@
 #pragma once
 #include <memory>
-#include "node.hpp"
 #include "smartNode.hpp"
 
-struct BinaryTree {
+class BinaryTree {
+    public:
     std::unique_ptr<SmartNode> root { nullptr };
+
+public:
+    BinaryTree(int root_value);
 
     void insert(int value);
     bool remove(int value);
     void clear();
-    bool contains(int value) const;
     size_t height() const;
 };
 
-bool contains(std::unique_ptr<SmartNode>& node, int value);
+void pretty_print_left_right(BinaryTree const& tree, std::string const& prefix, bool is_left);
+void pretty_print_left_right(BinaryTree const& tree);

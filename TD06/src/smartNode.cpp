@@ -27,7 +27,7 @@ std::unique_ptr<SmartNode> create_smart_node(int value){
 
 // Le noeud est-il une feuille ?
 bool SmartNode::is_leaf() const {
-    return !(left && right);
+    return !left && !right;
 }
 
 

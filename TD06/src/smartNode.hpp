@@ -15,11 +15,14 @@ struct SmartNode {
 
     int min() const;
     int max() const;
+
 };
+
+bool remove(std::unique_ptr<SmartNode>& node, int value);
 
 std::unique_ptr<SmartNode> create_smart_node(int value);
 std::unique_ptr<SmartNode>& most_left(std::unique_ptr<SmartNode>& node);
-bool remove(std::unique_ptr<SmartNode>& node, int value);
+// bool remove(std::unique_ptr<SmartNode>& node, int value);
 
 void pretty_print_left_right(SmartNode const& node, std::string const& prefix, bool is_left);    
 void pretty_print_left_right(SmartNode const& node);
